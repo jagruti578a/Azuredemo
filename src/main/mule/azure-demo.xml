@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="1bde6519-1eda-4395-ac9c-628fbc48681e" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="azure-demoFlow" doc:id="d7f87085-f051-4b0d-afe7-5282891c3702" >
+		<http:listener doc:name="Listener" doc:id="ae186e00-d70d-4bb5-8df6-ab54875f4223" config-ref="HTTP_Listener_config" path="/demo"/>
+		<set-payload value='#["azure demofor build and deploy pipeline"]' doc:name="Set Payload" doc:id="49657e3f-2122-4f2c-aa64-ecd1cbd048f4" />
+		<logger level="INFO" doc:name="Logger" doc:id="26a3285c-4265-4de4-95cf-b177d718540b" message="#[payload]"/>
+	</flow>
+</mule>
